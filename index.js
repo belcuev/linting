@@ -1,5 +1,16 @@
-var http = require("http");
-http.createServer(function(req,res) {
-  res.writeHead(200, {'Content-Type': 'text/plain'});
-  res.end('Aloha world');
-}).listen(process.env.PORT || 3000);
+const express = require('express');
+const app = express();
+const port = 3000;
+
+app.set('view engine','ejs');
+
+app.get('/', (req, res) => {
+  var title = "Home Page";
+  //res.send('Ola Express!');
+  res.render('index',{'title':title});
+});
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`);
+});
+
